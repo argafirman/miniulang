@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class kelas extends Model
+class Kelas extends Model
 {
+    use HasFactory;
+
     protected $table = 'kelas';
     protected $fillable = ['nama'];
 
-    public function tugas()
+    public function resources()
     {
-    return $this->hasMany(Tugas::class);
-    }
-
-    public function materi()
-    {
-    return $this->hasMany(Materi::class);
+        return $this->hasMany(Resource::class);
     }
 }

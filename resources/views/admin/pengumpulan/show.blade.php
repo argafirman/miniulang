@@ -6,9 +6,10 @@
 
     <div class="card">
         <div class="card-body">
-            <h4>{{ $pengumpulan->tugas->judul }}</h4>
+            <h4>{{ $pengumpulan->resource->name }}</h4> {{-- Mengubah tugas ke resource --}}
             <p><strong>Siswa:</strong> {{ $pengumpulan->siswa->name }}</p>
-            <p><strong>Deskripsi Tugas:</strong> {{ $pengumpulan->tugas->deskripsi }}</p>
+            <p><strong>Deskripsi Tugas:</strong> {{ $pengumpulan->resource->desk }}</p> {{-- Mengubah tugas->deskripsi
+            ke resource->desk --}}
             <p><strong>Tanggal Pengumpulan:</strong> {{ $pengumpulan->created_at->format('d M Y, H:i') }}</p>
 
             <div>

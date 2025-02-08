@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use App\Models\Kelas;
-use App\Models\Tugas;
+use App\Models\KelasResource;
 use App\Models\Pengumpulan;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -15,21 +14,21 @@ class PengumpulanController extends Controller
 {
     public function index()
     {
-        $pengumpulans = Pengumpulan::with(['tugas', 'siswa'])->get();
+        $pengumpulans = Pengumpulan::with(['resource', 'siswa'])->get();
         return view('pengumpulan.index', compact('pengumpulans'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'tugas_id' => 'required|exists:tugas,id',
+            'resource_id' => 'required|exists:resources,id', // Sesuai dengan tabel yang benar
             'file' => 'required|file|mimes:pdf,doc,docx,zip|max:5120', // Maksimal 5MB
         ]);
 
         $path = $request->file('file')->store('pengumpulan_tugas', 'public');
 
         Pengumpulan::create([
-            'tugas_id' => $request->tugas_id,
+            'resource_id' => $request->resource_id, // Menggunakan resource_id
             'user_id' => Auth::id(),
             'file_path' => $path,
         ]);

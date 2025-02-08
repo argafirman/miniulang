@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2>Edit Pengumpulan Tugas: {{ $pengumpulan->tugas->judul }}</h2>
+    <h2>Edit Pengumpulan Tugas: {{ $pengumpulan->resource->name }}</h2> {{-- Mengubah tugas menjadi resource --}}
 
     <form action="{{ route('pengumpulan.update', $pengumpulan->id) }}" method="POST" enctype="multipart/form-data">
         @csrf

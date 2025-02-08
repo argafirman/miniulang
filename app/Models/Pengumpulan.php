@@ -9,9 +9,9 @@ class Pengumpulan extends Model
     protected $table = 'pengumpulan';
     protected $fillable = ['tugas_id', 'user_id', 'jawaban', 'file_path'];
 
-    public function tugas()
+    public function resource()
     {
-    return $this->belongsTo(Tugas::class);
+    return $this->belongsTo(Resource::class);
     }
 
     public function user()

@@ -2,12 +2,13 @@
 
 @section('content')
 <div class="container">
-    <h2>Pengumpulan Tugas: {{ $tugas->judul }}</h2>
+    <h2>Pengumpulan Tugas: {{ $resource->name }}</h2> {{-- Mengubah tugas menjadi resource --}}
 
     <form action="{{ route('pengumpulan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
+        <input type="hidden" name="resource_id" value="{{ $resource->id }}"> {{-- Mengubah tugas_id menjadi resource_id
+        --}}
 
         <div class="form-group">
             <label for="file">File Pengumpulan</label>
